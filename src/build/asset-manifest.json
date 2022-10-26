@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.bf280024.js",
+    "static/js/787.d6348e0e.chunk.js": "/static/js/787.d6348e0e.chunk.js",
+    "static/media/pdf.worker.js": "/static/media/pdf.worker.5a4781656f64092ca08b.js",
+    "static/media/gradphoto2.jpg": "/static/media/gradphoto2.4633be3b0efa51806ad2.jpg",
+    "static/media/Resume2022.pdf": "/static/media/Resume2022.70c4dec288ffa442e50d.pdf",
+    "index.html": "/index.html",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.bf280024.js.map": "/static/js/main.bf280024.js.map",
+    "787.d6348e0e.chunk.js.map": "/static/js/787.d6348e0e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.bf280024.js"
+  ]
+}

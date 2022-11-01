@@ -6,7 +6,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.json());
 
-const uri = "mongodb+srv://nolanb:Bookout111@cluster0.rb1ibnf.mongodb.net/?retryWrites=true&w=majority";
+// const uri = "mongodb+srv://nolanb:Bookout111@cluster0.rb1ibnf.mongodb.net/?retryWrites=true&w=majority";
+const uri="mongodb+srv://nolanb:Bookout111@cluster0.rb1ibnf.mongodb.net/test";
 const withDB = async (operations, res) => {
     try {
 

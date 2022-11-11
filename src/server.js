@@ -24,14 +24,30 @@ const withDB = async (operations, res) => {
 }
 
 app.get('/api/projects/:name', async (req, res) => {
-    withDB(async (db) => {
-        const projectName = req.params.name;
+    // withDB(async (db) => {
+    //     const projectName = req.params.name;
         
-        const projectsInfo = await db.collection("Projects").findOne({ name: projectName });
-        res.status(200).json(projectsInfo);
-    }, res)
-
+    //     const projectsInfo = await db.collection("Projects").findOne({ name: projectName });
+    //     res.status(200).json(projectsInfo);
+    // }, res)
+    res.write({
+        "_id": "63374fc27acd62307cbbcc3e",
+        "name": "vi",
+        "upvotes": 0,
+        "comments": [
+            {
+                "username": "nolan",
+                "text": "hi"
+            },
+            {
+                "username": "jjjj",
+                "text": "nnnn"
+            }
+        ]
+    });
+    res.end();
 })
+
 
 app.post('/api/projects/:name/upvote', (req, res) => {
     const projectName = req.params.name;
@@ -59,6 +75,6 @@ app.post('/api/projects/:name/add-comment', (req, res) => {
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/build/index.html"));
 })
-// app.listen(8000, () => console.log('Listening on port 8000'));
+app.listen(8000, () => console.log('Listening on port 8000'));
 module.exports =app;
 module.exports.handler = serverless(app);

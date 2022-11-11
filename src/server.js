@@ -1,3 +1,5 @@
+'use strict';
+import serverless from 'serverless-http';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from "path";
@@ -24,7 +26,7 @@ const withDB = async (operations, res) => {
 app.get('/api/projects/:name', async (req, res) => {
     withDB(async (db) => {
         const projectName = req.params.name;
-
+        
         const projectsInfo = await db.collection("Projects").findOne({ name: projectName });
         res.status(200).json(projectsInfo);
     }, res)
@@ -57,4 +59,6 @@ app.post('/api/projects/:name/add-comment', (req, res) => {
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/build/index.html"));
 })
-app.listen(8000, () => console.log('Listening on port 8000'));
+// app.listen(8000, () => console.log('Listening on port 8000'));
+module.exports =app;
+module.exports.handler = serverless(app);

@@ -1,5 +1,7 @@
-'use strict';
 import serverless from 'serverless-http';
+import * as dotenv from "dotenv"
+dotenv.config()
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from "path";
@@ -8,8 +10,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.json());
 
-// const uri = "mongodb+srv://nolanb:Bookout111@cluster0.rb1ibnf.mongodb.net/?retryWrites=true&w=majority";
-const uri="mongodb+srv://nolanb:Bookout111@cluster0.rb1ibnf.mongodb.net/test";
+const uri = process.env.SECRET_KEY
 const withDB = async (operations, res) => {
     try {
 
@@ -24,28 +25,13 @@ const withDB = async (operations, res) => {
 }
 
 app.get('/api/projects/:name', async (req, res) => {
-    // withDB(async (db) => {
-    //     const projectName = req.params.name;
+    withDB(async (db) => {
+        const projectName = req.params.name;
         
-    //     const projectsInfo = await db.collection("Projects").findOne({ name: projectName });
-    //     res.status(200).json(projectsInfo);
-    // }, res)
-    res.write({
-        "_id": "63374fc27acd62307cbbcc3e",
-        "name": "vi",
-        "upvotes": 0,
-        "comments": [
-            {
-                "username": "nolan",
-                "text": "hi"
-            },
-            {
-                "username": "jjjj",
-                "text": "nnnn"
-            }
-        ]
-    });
-    res.end();
+        const projectsInfo = await db.collection("Projects").findOne({ name: projectName });
+        res.status(200).json(projectsInfo);
+    }, res)
+   
 })
 
 

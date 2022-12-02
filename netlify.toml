@@ -2,3 +2,9 @@
     from="/*"
     to="/index.html"
     status=200
+
+[build]
+  command = "npm install"
+  functions = "functions"
+[start]
+  command = "npx nodemon --exec npx babel-node src/server.js"

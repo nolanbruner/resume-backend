@@ -1,11 +1,11 @@
 import serverless from 'serverless-http';
 import * as dotenv from "dotenv"
 dotenv.config()
+import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from "path";
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.json());
